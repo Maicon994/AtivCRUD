@@ -241,10 +241,15 @@ public class ProdutoView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnSalvarActionPerformed
 
     private void btnEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEditarActionPerformed
+         try {
         int id = Integer.parseInt(txtId.getText());
         int quantidade = Integer.parseInt(txtQuantidade.getText());
-        double preco = Double.parseDouble(txtPreco.getText());
-        boolean ativo = Boolean.parseBoolean(txtAtivo.getText());
+
+        // Corrige vírgula no preço (padrão BR)
+        double preco = Double.parseDouble(txtPreco.getText().replace(",", "."));
+
+        // Melhor forma de tratar boolean vindo de texto
+        boolean ativo = txtAtivo.getText().equalsIgnoreCase("true");
 
         String msg = controller.atualizar(
                 id,
@@ -258,6 +263,12 @@ public class ProdutoView extends javax.swing.JFrame {
 
         JOptionPane.showMessageDialog(null, msg);
         listarTabela();
+
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(null, "Erro: verifique os campos numéricos!");
+    } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "Erro: " + e.getMessage());
+    }
     }//GEN-LAST:event_btnEditarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed

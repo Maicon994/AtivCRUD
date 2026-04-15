@@ -1,7 +1,6 @@
 package br.ulbra.controller;
 
 import br.ulbra.dao.ProdutoDAOImpl;
-import br.ulbra.model.Cliente;
 import br.ulbra.model.Produto;
 import br.ulbra.service.ProdutoService;
 import java.util.List;
@@ -53,8 +52,5 @@ public class ProdutoController {
         } catch (Exception e) {
             return "Erro:+"+e.getMessage();
         }
-    }
-
-
-    
+    }  
 }

@@ -25,7 +25,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
             stmt.setDouble(4, produto.getPreco());
             stmt.setString(5, produto.getCategoria());
             stmt.setBoolean(6, produto.getAtivo());
-            
+
             stmt.executeUpdate();
 
         } catch (Exception e) {
@@ -104,6 +104,7 @@ public class ProdutoDAOImpl implements ProdutoDAO {
             stmt.setDouble(4, produto.getPreco());
             stmt.setString(5, produto.getCategoria());
             stmt.setBoolean(6, produto.getAtivo());
+            stmt.setInt(7, produto.getId());
 
             stmt.executeUpdate();
 
@@ -126,7 +127,5 @@ public class ProdutoDAOImpl implements ProdutoDAO {
             throw new RuntimeException(e);
         }
     }
-
-
 
 }
